@@ -15,10 +15,12 @@ case object StackUnderflow extends StackError
   * It also keeps a reference to the item after it has been popped because
   * the Stack does not ever release popped items until they've been overwritten
   * in memory position by another push.
+  *
+  * This is a stack implemented through an Array.
   */
-class Stack[T : ClassTag](var size: Int) {
-  val data: Array[T] = new Array[T](size)
-  var top: Int = 0
+class Stack[T : ClassTag](private var size: Int) {
+  private val data: Array[T] = new Array[T](size)
+  private var top: Int = 0
 
   /** Determine if the stack is empty
     *
