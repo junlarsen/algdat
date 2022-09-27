@@ -78,4 +78,12 @@ class LinkedList[T] {
     }
     node
   }
+
+  def search(fn: Node => Boolean): Option[Node] = {
+    var node = head
+    while (node.isDefined && !fn(node.get)) {
+      node = node.get.next
+    }
+    node
+  }
 }
