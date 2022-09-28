@@ -24,7 +24,7 @@ class HashTable[K, V](val maxBuckets: Int) {
 
   /** Insert a value for a given key into the hash table.
     *
-    * This is done in constant time $$\Theta(1)$$
+    * This is done in constant time $$O(1)$$
     */
   def put(key: K, value: V): Unit = {
     val hash = key.hashCode() % maxBuckets

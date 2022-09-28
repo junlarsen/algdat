@@ -38,7 +38,7 @@ class Queue[T : ClassTag](var size: Int) {
 
   /** Add an item to the Queue.
     *
-    * This is done in constant time $$\Theta(1)$$
+    * This is done in constant time $$O(1)$$
     */
   def enqueue(value: T): Either[QueueError, Unit] = {
     if (isFull) {
@@ -53,7 +53,7 @@ class Queue[T : ClassTag](var size: Int) {
 
   /** Remove an item from the Queue.
     *
-    * This is done in contant time $$\Theta(1)$$
+    * This is done in contant time $$O(1)$$
     */
   def dequeue(): Either[QueueError, T] = {
     if (isEmpty) {

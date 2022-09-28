@@ -7,12 +7,12 @@ package com.supergrecko.dsa.sorting
   *
   * Its time complexity properties are as follows:
   *
-  * - Best case of $$\Theta(n)$$ in the case that the input array is already
+  * - Best case of $$O(n)$$ in the case that the input array is already
   *   sorted.
-  * - Worst case of $$\Theta(n^2^)$$ in the case that the input is reverse sorted.
+  * - Worst case of $$O(n^2^)$$ in the case that the input is reverse sorted.
   *   This means that the inner loop has to work through the entire array,
   *   comparing (and failing each time).
-  * - Average case of $$\Theta(n^2^)$$ because it will typically run many
+  * - Average case of $$O(n^2^)$$ because it will typically run many
   *   iterations in the inner loop for a uniformly filled array.
   */
 object InsertionSort {

@@ -14,7 +14,7 @@ class LinkedList[T] {
 
     /** Insert a given node in front of this
       *
-      * This is done in constant time $$\Theta(1)$$.
+      * This is done in constant time $$O(1)$$.
       */
     def insert(node: Node): Unit = {
       next = node.next
@@ -33,7 +33,7 @@ class LinkedList[T] {
 
   /** Add a node to the front of the LinkedList
     *
-    * This is done in constant time $$\Theta(1)$$.
+    * This is done in constant time $$O(1)$$.
     */
   def prepend(node: Node): Unit = {
     node.next = head
@@ -48,7 +48,7 @@ class LinkedList[T] {
 
   /** Delete the given node from the LinkedList
     *
-    * This is done in constant time $$\Theta(1)$$.
+    * This is done in constant time $$O(1)$$.
     */
   def delete(node: Node): Unit = {
     node.prev match {
@@ -67,7 +67,7 @@ class LinkedList[T] {
     * This iterates through the nodes in the list until it finds a node whose
     * value is equal to the search value. In case of no match, None is returned.
     *
-    * - Best case: $$\Theta(1)$$ if the search element is the first in the list
+    * - Best case: $$O(1)$$ if the search element is the first in the list
     * - Worst case: $$\Theta(n)$$ if the search element is not in the list
     * - Average case: $$O(n)$$
     */

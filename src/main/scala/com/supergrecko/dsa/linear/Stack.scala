@@ -24,13 +24,13 @@ class Stack[T : ClassTag](private var size: Int) {
 
   /** Determine if the stack is empty
     *
-    * This is done in constant time $$\Theta(1)$$
+    * This is done in constant time $$O(1)$$
     */
   def empty(): Boolean = top == 0
 
   /** Add an item to the top of the stack
     *
-    * This is done in constant time $$\Theta(1)$$
+    * This is done in constant time $$O(1)$$
     */
   def push(value: T): Either[StackError, Unit] = {
     if (top == size - 1) {
@@ -45,7 +45,7 @@ class Stack[T : ClassTag](private var size: Int) {
 
   /** Remove an item from the top of the stack
     *
-    * This is done in constant time $$\Theta(1)$$
+    * This is done in constant time $$O(1)$$
     */
   def pop(): Either[StackError, T] = {
     if (empty()) {
