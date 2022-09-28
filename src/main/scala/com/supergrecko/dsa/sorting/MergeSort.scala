@@ -17,6 +17,10 @@ import scala.reflect.ClassTag
   * - Average case of $$\Theta(n \lg n) because it will do the same amount of
   *   iterations
   * - Worst case of $$\Theta(n \lg n) because it cannot end up iterating more.
+  *
+  * This is because the sub-procedure Merge takes linear time, while MergeSort
+  * at the same time divides the elements into a recursion tree of size
+  * $$\lg n$$.
   */
 object MergeSort {
   import Ordering.Implicits._
@@ -31,6 +35,20 @@ object MergeSort {
     }
   }
 
+  /** Merge is the driver for MergeSort.
+    *
+    * It merges two subsequences of the array, ensuring that the span of the two
+    * subsequences are sorted after the call. You already assume that both
+    * subsequences are sorted (MergeSort calls Merge after the recursive call
+    * ensuring the subsequences are sorted).
+    *
+    * Merge will then pick elements from the top of each sequence, merging them
+    * into one sequence where all the elements are sorted. In MergeSort, this
+    * is the main sorting and comparison step.
+    *
+    * The complexity of merge is $$\Theta(n)$$ where $$n$$ is the size span of
+    * the original array.
+    */
   def merge[T : Ordering : ClassTag](xs: Array[T], low: Int, mid: Int, high: Int): Unit = {
     val lsz = mid - low + 1
     val rsz = high - mid

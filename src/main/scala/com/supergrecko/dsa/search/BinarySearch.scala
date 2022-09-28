@@ -1,7 +1,5 @@
 package com.supergrecko.dsa.search
 
-import scala.annotation.tailrec
-
 /** BinarySearch is a divide & conquer search algorithm.
   *
   * It works on an already-sorted list, cutting the list in half for each

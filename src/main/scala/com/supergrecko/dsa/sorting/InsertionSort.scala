@@ -5,6 +5,9 @@ package com.supergrecko.dsa.sorting
   * It is a comparison-based, stable sorting algorithm that sorts the elements
   * in-place in the input array.
   *
+  * InsertionSort works by selecting each element from the list and moving it as
+  * far down the list as possible by comparing its right neighbour.
+  *
   * Its time complexity properties are as follows:
   *
   * - Best case of $$O(n)$$ in the case that the input array is already
