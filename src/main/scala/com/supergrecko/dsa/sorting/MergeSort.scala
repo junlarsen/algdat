@@ -2,12 +2,12 @@ package com.supergrecko.dsa.sorting
 
 import scala.reflect.ClassTag
 
-/** MergeSort is a sorting algorithm.
+/** MergeSort is a divide & conquer sorting algorithm.
   *
   * It is a comparison-based, unstable sorting algorithm that sorts the elements
   * in-place in the input array.
   *
-  * It operates by a sub-procedure called merge which splits the array at the
+  * It operates by a sub-procedure called Merge which splits the array at the
   * boundary and sorts one side of the pivot.
   *
   * Its time complexity properties are as follows:
