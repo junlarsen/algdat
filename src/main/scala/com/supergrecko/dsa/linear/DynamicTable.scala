@@ -16,6 +16,14 @@ class DynamicTable[T : ClassTag](defaultSize: Int = 64) {
     */
   def get(index: Int): T = data(index)
 
+  /** Insert a new value into the dynamic table.
+    *
+    * Its time complexity properties are as follows:
+    *
+    * - Best case of $$O(1)$$ when the array doesn't need to resize
+    * - Average case of $$O(1)$$ since resizing should be rare
+    * - Worst case of $$O(n)$$ in the case it has to resize
+    */
   def push(value: T): Unit = {
     if (size >= capacity) {
       capacity *= 2
