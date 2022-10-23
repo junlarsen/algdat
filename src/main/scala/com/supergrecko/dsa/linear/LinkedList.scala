@@ -68,7 +68,7 @@ class LinkedList[T] {
     * value is equal to the search value. In case of no match, None is returned.
     *
     * - Best case: $$O(1)$$ if the search element is the first in the list
-    * - Worst case: $$\Theta(n)$$ if the search element is not in the list
+    * - Worst case: $$O(n)$$ if the search element is not in the list
     * - Average case: $$O(n)$$
     */
   def search(value: T): Option[Node] = {
@@ -79,6 +79,14 @@ class LinkedList[T] {
     node
   }
 
+  /** Search for a given value in the LinkedList that matches the predicate
+    *
+    * This implementation is almost identical to the original one, except it
+    * matches the item against a predicate. It has the same time complexities
+    * as the original search implementation.
+    *
+    * This function is not a part of the curriculum.
+    */
   def search(fn: Node => Boolean): Option[Node] = {
     var node = head
     while (node.isDefined && !fn(node.get)) {
