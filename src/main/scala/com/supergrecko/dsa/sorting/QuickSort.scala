@@ -11,9 +11,8 @@ package com.supergrecko.dsa.sorting
   *
   * Its time complexity properties are as follows:
   *
-  * - Best case of $$O(n \lg n)$$ because it will always divide through the
-  *   entire list.
-  * - Average case of $$O(n \lg n)$$ for the same reason.
+  * - Best case of $$O(n \lg n)$$
+  * - Average case of $$O(n \lg n)$$
   * - Worst case of $$O(n^2^)$$ for cases where the array is sorted in either
   *   direction or all the items are equal.
   *
