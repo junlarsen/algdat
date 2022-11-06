@@ -18,8 +18,10 @@ class BinarySearchTree[T : Ordering] extends BinaryTree[T] {
     *   iteration.
     * - Worst case of $$O(\lg n)$$ for the same reason.
     */
-  def insert(value: T): Unit = {
+  def insert(value: T): Node = insert(root, value)
+  def insert(root: Option[Node], value: T): Node = {
     var parent = root
+    val z = Node(value, None, None, None)
     var target: Option[Node] = None
     while (parent.isDefined) {
       target = parent
@@ -31,20 +33,21 @@ class BinarySearchTree[T : Ordering] extends BinaryTree[T] {
         parent = parent.get.right
       }
     }
-    // This implementation of a binary tree does not keep a pointer to its
-    // parent, so the `z.p = y` step of the CLRS pseudocode is omitted.
+    // Give the new node a parent
+    z.parent = target
     target match {
       // The target node exists, determine which side of the search tree to
       // insert the node at
       case Some(node) => if (value < node.value) {
-        node.left = Some(Node(value, None, None))
+        node.left = Some(z)
       } else {
-        node.right = Some(Node(value, None, None))
+        node.right = Some(z)
       }
       // If the target node is still None, it means the tree is empty, and
       // that the new node should be placed at the root.
-      case None => root = Some(Node(value, None, None))
+      case None => this.root = Some(z)
     }
+    z
   }
 
   /** Search through the binary search tree for a given value.
@@ -102,5 +105,27 @@ class BinarySearchTree[T : Ordering] extends BinaryTree[T] {
       node = node.get.left
     }
     node
+  }
+
+  /** Find the node with the smallest key greater than the given node's key.
+    *
+    * Its time complexity properties are as follows:
+    *
+    * - Best case of $$O(\lg n)$$
+    * - Average case of $$O(\lg n)$$
+    * - Worst case of $$O(\lg n)$$
+    */
+  def successor(node: Node): Option[Node] = {
+    node.right match {
+      case Some(_) => min(node.right)
+      case None =>
+        var start = node
+        var target = node.parent
+        while (target.isDefined && target.get.right.contains(start)) {
+          start = target.get
+          target = target.get.parent
+        }
+        target
+    }
   }
 }

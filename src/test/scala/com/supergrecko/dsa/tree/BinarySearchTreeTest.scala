@@ -7,16 +7,16 @@ class BinarySearchTreeTest extends AnyFunSuite {
     val bst = new BinarySearchTree[Int]
     bst.insert(12)
     // First item placed at root
-    assert(bst.root.contains(bst.Node(12, None, None)))
+    assert(bst.root.get.value == 12)
     bst.insert(6)
     // Lower item should be on the left
-    assert(bst.root.get.left.contains(bst.Node(6, None, None)))
+    assert(bst.root.get.left.get.value == 6)
     bst.insert(62)
     // Higher item should be on the right
-    assert(bst.root.get.right.contains(bst.Node(62, None, None)))
+    assert(bst.root.get.right.get.value == 62)
     bst.insert(32)
     // Higher than first, yet lower than right should land right-left
-    assert(bst.root.get.right.get.left.contains(bst.Node(32, None, None)))
+    assert(bst.root.get.right.get.left.get.value == 32)
   }
 
   test("it can search through the binary tree for a given value") {
@@ -38,5 +38,22 @@ class BinarySearchTreeTest extends AnyFunSuite {
     assert(bst.max().get.value == 7443)
     assert(bst.min().isDefined)
     assert(bst.min().get.value == -23)
+
+    val empty = new BinarySearchTree[Int]
+    assert(empty.max().isEmpty)
+    assert(empty.min().isEmpty)
+  }
+
+  test("it can find the successor of a node") {
+    val bst = new BinarySearchTree[Int]
+    bst.insert(1)
+    val intermediary = bst.insert(2)
+    bst.insert(3)
+    val succ = bst.successor(intermediary)
+    assert(succ.get.value == 3)
+
+    val empty = new BinarySearchTree[Int]
+    val root = empty.insert(1)
+    assert(empty.successor(root).isEmpty)
   }
 }
