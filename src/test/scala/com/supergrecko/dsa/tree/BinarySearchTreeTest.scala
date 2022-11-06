@@ -18,4 +18,25 @@ class BinarySearchTreeTest extends AnyFunSuite {
     // Higher than first, yet lower than right should land right-left
     assert(bst.root.get.right.get.left.contains(bst.Node(32, None, None)))
   }
+
+  test("it can search through the binary tree for a given value") {
+    val bst = new BinarySearchTree[Int]
+    bst.insert(1)
+    bst.insert(74)
+    bst.insert(23)
+    bst.insert(44)
+    assert(bst.search(1).isDefined)
+    assert(bst.search(43).isEmpty)
+  }
+
+  test("it can determine minimum and maximum values in a tree") {
+    val bst = new BinarySearchTree[Int]
+    bst.insert(0)
+    bst.insert(-23)
+    bst.insert(7443)
+    assert(bst.max().isDefined)
+    assert(bst.max().get.value == 7443)
+    assert(bst.min().isDefined)
+    assert(bst.min().get.value == -23)
+  }
 }

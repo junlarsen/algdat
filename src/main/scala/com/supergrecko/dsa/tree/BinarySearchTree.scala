@@ -17,7 +17,6 @@ class BinarySearchTree[T : Ordering] extends BinaryTree[T] {
     * - Average case of $$O(\lg n)$$ because it divides the tree in half each
     *   iteration.
     * - Worst case of $$O(\lg n)$$ for the same reason.
-    *
     */
   def insert(value: T): Unit = {
     var parent = root
@@ -46,5 +45,62 @@ class BinarySearchTree[T : Ordering] extends BinaryTree[T] {
       // that the new node should be placed at the root.
       case None => root = Some(Node(value, None, None))
     }
+  }
+
+  /** Search through the binary search tree for a given value.
+    *
+    * Its time complexity properties are as follows:
+    *
+    * - Best case of $$O(1)$$ in the case that the tree is empty, or the root
+    *   node of the tree is the search key.
+    * - Average case of $$O(\lg n)$$
+    * - Worst case of $$O(\lg n)$$
+    */
+  def search(key: T): Option[Node] = search(root, key)
+  def search(node: Option[Node], key: T): Option[Node] = {
+    node match {
+      case Some(n) => if (n.value == key) {
+        node
+      } else if (n.value > key) {
+        search(n.right, key)
+      } else {
+        search(n.left, key)
+      }
+      case None => None
+    }
+  }
+
+  /** Get the node with the lowest value from the tree.
+    *
+    * Its time complexity properties are as follows:
+    *
+    * - Best case of $$O(1)$$ in the case that the tree is empty.
+    * - Average case of $$O(\lg n)$$
+    * - Worst case of $$O(\lg n)$$
+    */
+  def max(): Option[Node] = max(root)
+  def max(start: Option[Node]): Option[Node] = {
+    var node = start
+    while (node.isDefined && node.get.right.isDefined) {
+      node = node.get.right
+    }
+    node
+  }
+
+  /** Get the node with the largest value from the tree.
+    *
+    * Its time complexity properties are as follows:
+    *
+    * - Best case of $$O(1)$$ in the case that the tree is empty.
+    * - Average case of $$O(\lg n)$$
+    * - Worst case of $$O(\lg n)$$
+    */
+  def min(): Option[Node] = min(root)
+  def min(start: Option[Node]): Option[Node] = {
+    var node = start
+    while (node.isDefined && node.get.left.isDefined) {
+      node = node.get.left
+    }
+    node
   }
 }
